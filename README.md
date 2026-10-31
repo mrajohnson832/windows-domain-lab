@@ -33,11 +33,11 @@ All hostnames, IPs, and credentials are lab-only placeholders.
 
 ## Phased plan (built incrementally)
 
-### Phase 1 — Build the domain
+### Phase 1 - Build the domain
 Stand up `dc01`, create the domain, add users/groups/OUs, join `win-client01`. Configure
 DNS/DHCP. Baseline snapshot in Proxmox so I can reset between tests.
 
-### Phase 2 — Harden to a baseline
+### Phase 2 - Harden to a baseline
 Apply and document hardening mapped to **CIS Controls / NIST CSF**:
 - Least-privilege RBAC; separate admin accounts; tiered admin model.
 - GPO hardening: disable SMBv1, disable LLMNR/NBT-NS, enforce SMB signing, strong password /
@@ -48,12 +48,12 @@ Apply and document hardening mapped to **CIS Controls / NIST CSF**:
 - A short **security-program document** (WISP-style) mapping each control to its framework
   objective, written as a generic reference implementation.
 
-### Phase 3 — Instrument detection
+### Phase 3 - Instrument detection
 Deploy **Wazuh**: agents on `dc01` and `win-client01`, ship Windows Security logs, enable and
 tune detections for the attacks in Phase 4 (failed-logon spikes, Kerberoasting, LLMNR
 poisoning, new privileged account, suspicious service creation). Build a dashboard.
 
-### Phase 4 — Attack and validate
+### Phase 4 - Attack and validate
 From `kali01`, run representative AD attacks and record, for each: did it succeed, did the SIEM
 detect it, and did the Phase 2 hardening prevent it?
 - LLMNR/NBT-NS poisoning (Responder) and relay (ntlmrelayx).
@@ -62,7 +62,7 @@ detect it, and did the Phase 2 hardening prevent it?
 - BloodHound enumeration of attack paths.
 Run each **before and after** hardening to produce clear before/after evidence.
 
-### Phase 5 — Write it up
+### Phase 5 - Write it up
 The portfolio deliverable: architecture, the hardening decisions and *why*, the detections
 built, the attacks run, and a **before/after table** showing which attacks were blocked or
 detected after hardening. Screenshots throughout (safe to publish, since it is my own lab).
